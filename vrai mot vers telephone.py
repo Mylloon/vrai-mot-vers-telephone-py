@@ -1,22 +1,44 @@
-def wordforphone(mot = None):
-    if not mot:
-        mot = input()
-    mot = list(str(mot).lower())
-    mot2 = []
-    a = 0
-    for n in mot:
-        a += 1
-        if n != " ":
-            n = n.replace("a","2").replace("b","22").replace("c","222").replace("d","3").replace("e","33").replace("f","333").replace("g","4").replace("h","44")
-            n = n.replace("i","444").replace("j","5").replace("k","55").replace("l","555").replace("m","6").replace("n","66").replace("o","666").replace("p","7")
-            n = n.replace("q","77").replace("r","777").replace("s","7777").replace("t","8").replace("u","88").replace("v","888").replace("w","9").replace("x","99")
-            n = n.replace("y","999").replace("z","9999")
-            mot2.append(n)
-            if a < len(mot):
-                mot2.append(" - ")
-    mot2 = str(mot2).replace("[","").replace("]","").replace("'","").replace(",","").replace("  "," ")
-    print(mot2)
-    input("PRESS ENTER TO EXIT")
+class Wordtophone:
+
+    def __init__(self):
+        self.replace = {
+            "a": "2",
+            "b": "22",
+            "c": "222",
+            "d": "3",
+            "e": "33",
+            "f": "333",
+            "g": "4",
+            "h": "44",
+            "i": "444",
+            "j": "5",
+            "k": "55",
+            "l": "555",
+            "m": "6",
+            "n": "66",
+            "o": "666",
+            "p": "7",
+            "q": "77",
+            "r": "777",
+            "s": "7777",
+            "t": "8",
+            "u": "88",
+            "v": "888",
+            "w": "9",
+            "x": "99",
+            "y": "999",
+            "z": "9999",
+            "  ": " -"
+        }
+
+    def wordforphone(self, mot = None):
+        if not mot:
+            mot = input()
+        mot = str(mot).lower()
+        
+        for key in self.replace:
+            mot = mot.replace(key, f"{self.replace[key]} ")
+        return print(mot)
 
 if __name__ == '__main__':
-    wordforphone()
+    Wordtophone().wordforphone()
